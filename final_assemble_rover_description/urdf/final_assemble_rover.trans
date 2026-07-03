@@ -1,4 +1,0 @@
-<?xml version="1.0" ?>
-<robot name="final_assemble_rover" xmlns:xacro="http://www.ros.org/wiki/xacro" >
-
-</robot>
