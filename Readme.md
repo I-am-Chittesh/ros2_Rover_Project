@@ -1,7 +1,11 @@
 # Rover project using ros2
 
 ## 1. SYSTEM CONTEXT & HARDWARE SPECIFICATIONS
-
+---
+```
+Start Date 2nd week of June
+```
+---
 ### The Physical Robot (The Body)
 - **Kinematics:** Differential drive configuration (2 independent active drive wheels + 1 passive caster wheel).
 - **Primary Compute:** ESP32 microcontroller running embedded micro-ROS firmware communicating over a local Wi-Fi network.
