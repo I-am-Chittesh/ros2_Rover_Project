@@ -10,9 +10,9 @@
 </joint>
 
 <xacro:include filename="$(find final_assemble_rover_description)/urdf/materials.xacro" />
-<xacrol:include filename="$(find final_assemble_rover_description)/urdf/gazebo_control.xacro" />  
 <xacro:include filename="$(find final_assemble_rover_description)/urdf/final_assemble_rover.trans" />
 <xacro:include filename="$(find final_assemble_rover_description)/urdf/final_assemble_rover.gazebo" />
+<xacrol:include filename="$(find final_assemble_rover_description)/urdf/gazebo_control.xacro" />  
 
 
 <link name="base_link">
