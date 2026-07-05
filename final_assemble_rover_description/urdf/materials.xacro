@@ -7,11 +7,11 @@
 
 <material name="red">
   <color rgba="0.800 0.000 0.000 1.000"/>
-<material>
+</material>
 
 <material name="black">
   <color rgba="0.000 0.000 0.000 1.000"/>
-<material>
+</material>
 
 
 </robot>
