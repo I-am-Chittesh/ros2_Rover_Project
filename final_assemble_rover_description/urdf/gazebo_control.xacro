@@ -5,8 +5,8 @@
         <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
 
             <!-- Wheel Information -->
-            <left_joint>left_wheel_joint</left_joint> <!-- UPDATE THIS -->
-            <right_joint>right_wheel_joint</right_joint> <!-- UPDATE THIS -->
+            <left_joint>Revolute 19</left_joint> 
+            <right_joint>Revolute 20</right_joint>
             <wheel_separation>0.35</wheel_separation>
             <wheel_diameter>0.1</wheel_diameter>
 
