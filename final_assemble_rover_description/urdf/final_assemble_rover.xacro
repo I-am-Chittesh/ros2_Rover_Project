@@ -10,6 +10,8 @@
 <xacro:include filename="$(find final_assemble_rover_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find final_assemble_rover_description)/urdf/final_assemble_rover.trans" />
 <xacro:include filename="$(find final_assemble_rover_description)/urdf/final_assemble_rover.gazebo" />
+
+
 <link name="base_link">
   <inertial>
     <origin xyz="-0.012288395840692032 0.034460399576695354 0.0011969906215803167" rpy="0 0 0"/>
@@ -21,7 +23,7 @@
     <geometry>
       <mesh filename="package://final_assemble_rover_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="red"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -105,7 +107,7 @@
     <geometry>
       <mesh filename="package://final_assemble_rover_description/meshes/laser_link_1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="black"/>
   </visual>
   <collision>
     <origin xyz="0.0025 -0.09965 -0.0" rpy="0 0 0"/>
