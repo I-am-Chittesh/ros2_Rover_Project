@@ -2,13 +2,21 @@
 <robot name="final_assemble_rover" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 
-<link name="base_footprint">
-    <inertial>
-        <mass value="0.0001"/>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-    </inertial>
-</link>
+<!-- The Root Link -->
+    <link name="base_footprint">
+        <inertial>
+            <mass value="0.0001"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+        </inertial>
+    </link>
+
+    <!-- The Joint connecting the Root to the Chassis -->
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.1" rpy="1.5708 0 0"/> 
+    </joint>
 
 <xacro:include filename="$(find final_assemble_rover_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find final_assemble_rover_description)/urdf/final_assemble_rover.trans" />
