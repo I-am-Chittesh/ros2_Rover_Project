@@ -29,12 +29,6 @@
     </geometry>
     <material name="red"/>
   </visual>
-  <collision>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <geometry>
-      <mesh filename="package://final_assemble_rover_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
 </link>
 
 <link name="right_wheel_link_1_1">
@@ -92,12 +86,6 @@
     </geometry>
     <material name="silver"/>
   </visual>
-  <collision>
-    <origin xyz="-0.039746 0.0076 0.0" rpy="0 0 0"/>
-    <geometry>
-      <mesh filename="package://final_assemble_rover_description/meshes/castor_link_1_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
 </link>
 
 <link name="laser_link_1_1">
@@ -113,12 +101,6 @@
     </geometry>
     <material name="silver"/>
   </visual>
-  <collision>
-    <origin xyz="0.0025 -0.09965 -0.0" rpy="0 0 0"/>
-    <geometry>
-      <mesh filename="package://final_assemble_rover_description/meshes/laser_link_1_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
 </link>
 
 <joint name="Revolute 19" type="continuous">
