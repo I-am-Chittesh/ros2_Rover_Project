@@ -50,5 +50,6 @@ When responding to my next prompts, analyze our current state against the roadma
 - **Phase 2:** Gazebo Building Editor workflow and `.world` file integration with custom Blender `.dae` assets.
 - **Phase 3:** Configuring the `slam_toolbox` and `nav2` parameters to talk to the virtual URDF plugins.
 - **Phase 4:** Writing the micro-ROS ESP32 embedded C++ firmware and implementing the reflexive low-level sensor override logic.
-
-Acknowledge your complete understanding of this engineering brief in one short, direct sentence and wait for my instruction on which phase we are tackling first.
+```
+Made by: I-am-Chittesh
+```
