@@ -1,146 +1,128 @@
 <?xml version="1.0" ?>
 <robot name="final_assemble_rover" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- The Root Link -->
-    <link name="base_footprint"/>
-
-    <!-- The Joint connecting the Root to the Chassis -->
-    <joint name="base_footprint_joint" type="fixed">
-        <parent link="base_footprint"/>
-        <child link="base_link"/>
-        <origin xyz="0 0 0.1" rpy="1.5708 0 0"/> 
-    </joint>
-
+    <!-- INCLUDES (Kept exactly as you had them) -->
     <xacro:include filename="$(find final_assemble_rover_description)/urdf/materials.xacro" />
     <xacro:include filename="$(find final_assemble_rover_description)/urdf/final_assemble_rover.trans" />
     <xacro:include filename="$(find final_assemble_rover_description)/urdf/final_assemble_rover.gazebo" />
     <xacro:include filename="$(find final_assemble_rover_description)/urdf/gazebo_control.xacro" />  
 
+    <!-- ROOT LINK -->
+    <link name="base_footprint"/>
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.1" rpy="0 0 0"/> <!-- Cleaned up: No weird 90 degree pitch! -->
+    </joint>
 
+    <!-- CHASSIS (A simple flat box) -->
     <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><box size="0.2 0.15 0.08"/></geometry>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><box size="0.2 0.15 0.08"/></geometry>
+        </collision>
         <inertial>
-            <origin xyz="-0.012288395840692032 0.034460399576695354 0.0011969906215803167" rpy="0 0 0"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="1.0"/>
             <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />  
         </inertial>
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find final_assemble_rover_description)/meshes/base_link.stl" />
-            </geometry>
-            <material name="red"/>
-        </visual>
-<collision>
-  <origin xyz="0 0 0" rpy="0 0 0"/>
-  <geometry>
-    <box size="0.15 0.1 0.08"/> </geometry>
-</collision>
     </link>
 
+    <!-- RIGHT WHEEL (A clean cylinder) -->
     <link name="right_wheel_link_1_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/> <!-- Pitched 90 deg so it looks like a tire -->
+            <geometry><cylinder radius="0.04" length="0.02"/></geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <geometry><cylinder radius="0.04" length="0.02"/></geometry>
+        </collision>
         <inertial>
-            <origin xyz="2.6630935998084304e-08 -2.8968758173167353e-07 0.009889971933162212" rpy="0 0 0"/>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
             <mass value="0.1"/>
-<inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
         </inertial>
-        <visual>
-            <origin xyz="0.029 -0.025 -0.06121" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find final_assemble_rover_description)/meshes/right_wheel_link_1_1.stl" />
-            </geometry>
-            <material name="silver"/>
-        </visual>
-<collision>
-  <origin xyz="0.029 -0.025 -0.06121" rpy="0 0 0"/> 
-  <geometry>
-    <cylinder radius="0.035" length="0.02"/>
-  </geometry>
-</collision>
     </link>
-
-    <link name="left_wheel_link_1_1">
-        <inertial>
-            <origin xyz="-2.661230842117279e-07 7.953542884714393e-08 -0.009889974242528299" rpy="0 0 0"/>
-            <mass value="0.1"/>
-<inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />  
-        </inertial>
-        <visual>
-            <origin xyz="0.029 -0.025 0.06121" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find final_assemble_rover_description)/meshes/left_wheel_link_1_1.stl" />
-            </geometry>
-            <material name="silver"/>
-        </visual>
-<collision>
-  <origin xyz="0.029 -0.025 0.06121" rpy="0 0 0"/>
-  <geometry>
-    <cylinder radius="0.035" length="0.02"/>
-  </geometry>
-</collision>
-    </link>
-
-    <link name="castor_link_1_1">
-        <inertial>
-            <origin xyz="4.5208840455945865e-07 -1.0408340855860843e-17 -6.181836115575344e-17" rpy="0 0 0"/>
-            <mass value="0.01"/>
-<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />  
-        </inertial>
-        <visual>
-            <origin xyz="-0.039746 0.0076 0.0" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find final_assemble_rover_description)/meshes/castor_link_1_1.stl"/>
-            </geometry>
-            <material name="silver"/>
-        </visual>
-<collision>
-  <origin xyz="0.029 -0.025 -0.06121" rpy="1.5708 0 0"/> 
-  <geometry>
-    <cylinder radius="0.035" length="0.02"/> </geometry>
-</collision>
-    </link>
-
-    <link name="laser_link_1_1">
-        <inertial>
-            <origin xyz="0.003060220670157498 0.024734911622924308 0.0005321423848153578" rpy="0 0 0"/>
-            <mass value="0.01"/>
-<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" /> 
-        </inertial>
-        <visual>
-            <origin xyz="0.0025 -0.09965 -0.0" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find final_assemble_rover_description)/meshes/laser_link_1_1.stl"/>
-            </geometry>
-            <material name="silver"/>
-        </visual>
-<collision>
-  <origin xyz="0 0 0" rpy="0 0 0"/>
-  <geometry>
-    <box size="0.8 0.050 0.04"/> </geometry>
-</collision>
-    </link>
-
     <joint name="Revolute 19" type="continuous">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-0.05 -0.09 -0.04" rpy="0 0 0"/> <!-- Snapped directly to the back-right of the chassis -->
         <parent link="base_link"/>
         <child link="right_wheel_link_1_1"/>
-        <axis xyz="0.0 0.0 -1.0"/>
+        <axis xyz="0 1 0"/> <!-- Standard ROS Y-axis rotation for rolling -->
     </joint>
 
+    <!-- LEFT WHEEL (A clean cylinder) -->
+    <link name="left_wheel_link_1_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <geometry><cylinder radius="0.04" length="0.02"/></geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <geometry><cylinder radius="0.04" length="0.02"/></geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+        </inertial>
+    </link>
     <joint name="Revolute 20" type="continuous">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-0.05 0.09 -0.04" rpy="0 0 0"/> <!-- Snapped directly to the back-left of the chassis -->
         <parent link="base_link"/>
         <child link="left_wheel_link_1_1"/>
-        <axis xyz="0.0 0.0 -1.0"/>
+        <axis xyz="0 1 0"/>
     </joint>
 
+    <!-- CASTOR WHEEL (A frictionless sphere) -->
+    <link name="castor_link_1_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><sphere radius="0.02"/></geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><sphere radius="0.02"/></geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.05"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+    </link>
     <joint name="Rigid 21" type="fixed">
-        <origin xyz="0.039746 -0.0076 0.0" rpy="0 0 0"/>
+        <origin xyz="0.08 0 -0.06" rpy="0 0 0"/> <!-- Snapped directly to the front-center bottom -->
         <parent link="base_link"/>
         <child link="castor_link_1_1"/>
     </joint>
 
+    <!-- LASER SENSOR (A tiny box on top) -->
+    <link name="laser_link_1_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><box size="0.03 0.03 0.03"/></geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry><box size="0.03 0.03 0.03"/></geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.05"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+    </link>
     <joint name="Rigid 22" type="fixed">
-        <origin xyz="-0.0025 0.09965 0.0" rpy="0 0 0"/>
+        <origin xyz="0.05 0 0.05" rpy="0 0 0"/> <!-- Snapped directly to the top-front of the chassis -->
         <parent link="base_link"/>
         <child link="laser_link_1_1"/>
     </joint>
