@@ -51,7 +51,7 @@
             <material name="silver"/>
         </visual>
 <collision>
-  <origin xyz="0 0 0" rpy="0 0 0"/> 
+  <origin xyz="0.029 -0.025 -0.06121" rpy="0 0 0"/> 
   <geometry>
     <cylinder radius="0.035" length="0.02"/>
   </geometry>
@@ -72,7 +72,7 @@
             <material name="silver"/>
         </visual>
 <collision>
-  <origin xyz="0 0 0" rpy="0 0 0"/>
+  <origin xyz="0.029 -0.025 0.06121" rpy="0 0 0"/>
   <geometry>
     <cylinder radius="0.035" length="0.02"/>
   </geometry>
@@ -93,7 +93,7 @@
             <material name="silver"/>
         </visual>
 <collision>
-  <origin xyz="0 0 0" rpy="1.5708 0 0"/> 
+  <origin xyz="0.029 -0.025 -0.06121" rpy="1.5708 0 0"/> 
   <geometry>
     <cylinder radius="0.035" length="0.02"/> </geometry>
 </collision>
@@ -120,14 +120,14 @@
     </link>
 
     <joint name="Revolute 19" type="continuous">
-        <origin xyz="-0.029 0.025 0.06121" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="right_wheel_link_1_1"/>
         <axis xyz="0.0 0.0 -1.0"/>
     </joint>
 
     <joint name="Revolute 20" type="continuous">
-        <origin xyz="-0.029 0.025 -0.06121" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="left_wheel_link_1_1"/>
         <axis xyz="0.0 0.0 -1.0"/>
