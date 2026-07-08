@@ -30,12 +30,11 @@
             </geometry>
             <material name="red"/>
         </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find final_assemble_rover_description)/meshes/base_link.stl" />
-            </geometry>
-        </collision>
+<collision>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.15 0.1 0.08"/> </geometry>
+</collision>
     </link>
 
     <link name="right_wheel_link_1_1">
@@ -51,12 +50,11 @@
             </geometry>
             <material name="silver"/>
         </visual>
-        <collision>
-            <origin xyz="0.029 -0.025 -0.06121" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find final_assemble_rover_description)/meshes/right_wheel_link_1_1.stl" />
-            </geometry>
-        </collision>
+<collision>
+  <origin xyz="0.029 -0.025 -0.06121" rpy="1.5708 0 0"/> 
+  <geometry>
+    <cylinder radius="0.035" length="0.02"/> </geometry>
+</collision>
     </link>
 
     <link name="left_wheel_link_1_1">
@@ -72,12 +70,11 @@
             </geometry>
             <material name="silver"/>
         </visual>
-        <collision>
-            <origin xyz="0.029 -0.025 0.06121" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find final_assemble_rover_description)/meshes/left_wheel_link_1_1.stl" />
-            </geometry>
-        </collision>
+<collision>
+  <origin xyz="0.029 -0.025 -0.06121" rpy="1.5708 0 0"/> 
+  <geometry>
+    <cylinder radius="0.035" length="0.02"/> </geometry>
+</collision>
     </link>
 
     <link name="castor_link_1_1">
@@ -93,12 +90,11 @@
             </geometry>
             <material name="silver"/>
         </visual>
-        <collision>
-            <origin xyz="-0.039746 0.0076 0.0" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find final_assemble_rover_description)/meshes/castor_link_1_1.stl"/>
-            </geometry>
-        </collision>
+<collision>
+  <origin xyz="0.029 -0.025 -0.06121" rpy="1.5708 0 0"/> 
+  <geometry>
+    <cylinder radius="0.035" length="0.02"/> </geometry>
+</collision>
     </link>
 
     <link name="laser_link_1_1">
@@ -114,12 +110,11 @@
             </geometry>
             <material name="silver"/>
         </visual>
-        <collision>
-            <origin xyz="0.0025 -0.09965 -0.0" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find final_assemble_rover_description)/meshes/laser_link_1_1.stl"/>
-            </geometry>
-        </collision>
+<collision>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.8 0.050 0.04"/> </geometry>
+</collision>
     </link>
 
     <joint name="Revolute 19" type="continuous">
