@@ -27,7 +27,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://final_assemble_rover_description/meshes/base_link.stl" />
+      <mesh filename="file://$(find final_assemble_rover_description)/meshes/base_link.stl" />
     </geometry>
     <material name="red"/>
   </visual>
