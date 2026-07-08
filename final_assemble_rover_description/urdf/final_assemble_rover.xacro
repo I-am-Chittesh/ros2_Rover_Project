@@ -51,9 +51,10 @@
             <material name="silver"/>
         </visual>
 <collision>
-  <origin xyz="0.029 -0.025 -0.06121" rpy="1.5708 0 0"/> 
+  <origin xyz="0.029 -0.025 -0.06121" rpy="0 0 0"/> 
   <geometry>
-    <cylinder radius="0.035" length="0.02"/> </geometry>
+    <cylinder radius="0.035" length="0.02"/>
+  </geometry>
 </collision>
     </link>
 
