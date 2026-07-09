@@ -2,6 +2,5 @@
     "documentId": "bf487e698bf759fdcb648406",
     "workspaceId": "7190dedf85208c03acd2e546",
     "elementId": "744922f0e20d87b6bd626ab5",
-    "outputFormat": "urdf",
-    "ignoreMasses": true
+    "outputFormat": "urdf"
 }
