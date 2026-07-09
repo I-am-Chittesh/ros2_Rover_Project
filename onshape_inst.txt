@@ -58,8 +58,3 @@ Run the magic command:
 
 Bash
 onshape-to-robot .
-(Yes, include the period at the end).
-
-You will see the terminal light up. It will download your parts, calculate the center of mass for every single component, lock the joints, and generate a pristine robot.urdf file along with a meshes folder.
-
-Run this process. Let me know when the terminal finishes printing and says the URDF is generated!
