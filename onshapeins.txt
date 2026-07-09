@@ -1,0 +1,65 @@
+Step 1: Generate Your Onshape API Keys
+The extraction tool needs permission to read your private Onshape files.
+
+Go to the Onshape Developer Portal: dev-portal.onshape.com and log in.
+
+Click API Keys on the left menu, then click the Create new API key button.
+
+Give it a name (e.g., "ROS2 Rover").
+
+Under Permissions, check the boxes for Read under the Application and Documents sections (you can just check them all to be safe).
+
+Click Create API Key.
+
+DO NOT CLOSE THIS TAB. It will show you an Access Key and a Secret Key. The Secret Key is only shown once.
+
+Step 2: Install the Extractor on Ubuntu
+Open a brand new terminal window on your machine. We need to install the Python extraction tool.
+
+Run these commands:
+
+Bash
+sudo apt update
+sudo apt install python3-pip
+pip3 install onshape-to-robot
+Step 3: Link Your Keys to the Terminal
+We need to tell your terminal what those API keys are. In that exact same terminal window, run these two commands (replace the placeholder text with your actual keys from Step 1):
+
+Bash
+export ONSHAPE_API_ACCESS_KEY="PASTE_YOUR_ACCESS_KEY_HERE"
+export ONSHAPE_API_SECRET_KEY="PASTE_YOUR_SECRET_KEY_HERE"
+Step 4: Create the Clean Workspace & Config
+We are going to extract the rover into a brand new, clean folder so it doesn't get mixed up with the old Fusion 360 files.
+
+Create a new directory and go inside it:
+
+Bash
+mkdir -p ~/ros2_ws/src/onshape_rover
+cd ~/ros2_ws/src/onshape_rover
+Create the configuration file:
+
+Bash
+nano config.json
+Go back to your web browser where your Onshape rover assembly is open. Copy the entire URL from the address bar. It will look something like this: [https://cad.onshape.com/documents/12345/w/6789/e/101112](https://cad.onshape.com/documents/12345/w/6789/e/101112).
+
+Paste this exact text into your nano editor, replacing the URL with your actual copied URL:
+
+JSON
+{
+    "documentId": "PASTE_YOUR_ENTIRE_ONSHAPE_URL_HERE",
+    "outputFormat": "urdf"
+}
+Save and exit (Press Ctrl+O, Enter, then Ctrl+X).
+
+Step 5: Run the Extraction
+You are in the ~/ros2_ws/src/onshape_rover folder. Your keys are exported. Your config is saved.
+
+Run the magic command:
+
+Bash
+onshape-to-robot .
+(Yes, include the period at the end).
+
+You will see the terminal light up. It will download your parts, calculate the center of mass for every single component, lock the joints, and generate a pristine robot.urdf file along with a meshes folder.
+
+Run this process. Let me know when the terminal finishes printing and says the URDF is generated!
