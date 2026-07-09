@@ -18,8 +18,8 @@
   <link name="base_link">
     <inertial>
       <origin xyz="-0.00490882 -0.000846201 0.0714046" rpy="0 0 0"/>
-      <mass value="0.222325"/>
-      <inertia ixx="0.00059991" ixy="-8.12726e-07" ixz="-3.66324e-05" iyy="0.000620644" iyz="-1.74055e-06" izz="0.00031087"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
     </inertial>
     <!-- Part base_link -->
     <visual>
@@ -6522,8 +6522,8 @@
   <link name="right_wheel_link_1_1">
     <inertial>
       <origin xyz="2.4435e-08 2.83911e-07 -0.01589" rpy="0 0 0"/>
-      <mass value="0.0327076"/>
-      <inertia ixx="1.35205e-05" ixy="-6.6e-11" ixz="8e-12" iyy="1.35201e-05" iyz="9.8e-11" izz="2.24167e-05"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
     </inertial>
     <!-- Part right_wheel_link_1_1 -->
     <visual>
@@ -6554,8 +6554,8 @@
   <link name="left_wheel_link_1_1">
     <inertial>
       <origin xyz="-2.74849e-07 7.5237e-08 -0.01589" rpy="0 0 0"/>
-      <mass value="0.0327076"/>
-      <inertia ixx="1.35202e-05" ixy="1.27e-10" ixz="-9.5e-11" iyy="1.35205e-05" iyz="2.6e-11" izz="2.24167e-05"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
     </inertial>
     <!-- Part left_wheel_link_1_1 -->
     <visual>
@@ -6586,8 +6586,8 @@
   <link name="castor_link_1_1">
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <mass value="0.00387924"/>
-      <inertia ixx="7.6033e-08" ixy="0" ixz="-0" iyy="7.6033e-08" iyz="-0" izz="7.6033e-08"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
     </inertial>
     <!-- Part castor_link_1_1 -->
     <visual>
