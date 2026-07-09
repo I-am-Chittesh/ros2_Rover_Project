@@ -6607,7 +6607,7 @@
     </collision>
   </link>
   <!-- Joint from base_link to castor_link_1_1 -->
-  <joint name="castor_joint" type="ball">
+  <joint name="castor_joint" type="fixed">
     <origin xyz="0.0397465 0 -0.0076" rpy="-1.67306 -0.644916 1.42189"/>
     <parent link="base_link"/>
     <child link="castor_link_1_1"/>
