@@ -10,7 +10,7 @@
     <parent link="dummy_link"/>
     <child link="base_link"/>
   </joint>
-  
+
   <link
     name="base_link">
     <inertial>
@@ -252,9 +252,9 @@
   </link>
   <joint
     name="castor_joint"
-    type="continuous">
+    type="fixed">
     <origin
-      xyz="0.038053 -0.0069786 -0.033058"
+      xyz="0.038053 -0.0069786 -0.013058"
       rpy="-0.0010351 -0.035786 -3.1416" />
     <parent
       link="base_link" />
@@ -263,4 +263,11 @@
     <axis
       xyz="0.99975 0.02249 0" />
   </joint>
+  <gazebo reference="castor_link">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <material>Gazebo/Grey</material>
+  </gazebo>
 </robot>
