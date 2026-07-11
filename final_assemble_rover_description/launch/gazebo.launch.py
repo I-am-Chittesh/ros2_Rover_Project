@@ -7,38 +7,39 @@ from launch_ros.actions import Node
 import xacro
 
 def generate_launch_description():
-    package_name = 'final_assemble_rover_description'
-    pkg_path = get_package_share_directory(package_name)
+    pkg_name = 'final_assemble_rover_description'
+    pkg_path = os.path.join(get_package_share_directory(pkg_name))
     
-    # Parse the URDF/XACRO file
     xacro_file = os.path.join(pkg_path, 'urdf', 'final_assemble_rover.xacro')
-    robot_description_config = xacro.process_file(xacro_file)
-    robot_desc = {'robot_description': robot_description_config.toxml()}
-    
-    # 1. Start the robot state publisher to broadcast the rover's "bones"
+    doc = xacro.parse(open(xacro_file))
+    xacro.process_doc(doc)
+    robot_description = {'robot_description': doc.toxml()}
+
+    # Include Gazebo Classic Launch
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')
+        )
+    )
+
+    # Robot State Publisher Node
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         output='screen',
-        parameters=[robot_desc]
+        parameters=[robot_description]
     )
-    
-    # 2. Boot up the empty Gazebo physics world
-    gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
-    )
-    
-    # 3. Spawn the rover into the simulation
+
+    # Spawn Entity Node
     spawn_entity = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
-        arguments=['-topic', 'robot_description', '-entity', 'my_rover', '-z', '0.15'],
+        arguments=['-topic', 'robot_description', '-entity', 'my_rover'],
         output='screen'
     )
-    
+
     return LaunchDescription([
-        node_robot_state_publisher,
         gazebo,
+        node_robot_state_publisher,
         spawn_entity
     ])
