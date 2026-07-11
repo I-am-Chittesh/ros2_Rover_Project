@@ -254,7 +254,7 @@
     name="castor_joint"
     type="fixed">
     <origin
-      xyz="0.038053 -0.0069786 -0.013058"
+      xyz="0.038053 -0.0069786 -0.026058"
       rpy="-0.0010351 -0.035786 -3.1416" />
     <parent
       link="base_link" />
