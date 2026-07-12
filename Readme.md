@@ -5,6 +5,7 @@
 ```
 Start Date 2nd week of June
 v1.0.0 stable
+v1.1.9 stable
 ```
 ---
 ### The Physical Robot (The Body)
