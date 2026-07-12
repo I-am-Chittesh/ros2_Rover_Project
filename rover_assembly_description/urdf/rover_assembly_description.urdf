@@ -324,4 +324,41 @@
 
     </plugin>
   </gazebo>
+  <gazebo reference="lidar_link">
+  <sensor type="ray" name="lidar_sensor">
+    <pose>0 0 0 0 0 0</pose>
+    <visualize>true</visualize> <!-- Keep true so you can see the blue laser rays in Gazebo -->
+    <update_rate>10.0</update_rate> <!-- Scans per second (Hz) -->
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>360</samples>
+          <!-- Resolution of 1 means 1 ray per sample. 360 samples = 1 ray per degree -->
+          <resolution>1.0</resolution> 
+          <min_angle>-3.14159</min_angle> <!-- -180 degrees in radians -->
+          <max_angle>3.14159</max_angle>  <!-- +180 degrees in radians -->
+        </horizontal>
+      </scan>
+      <range>
+        <!-- The min range MUST be larger than the radius of your rover's physical footprint -->
+        <!-- Otherwise, the LiDAR will detect your own chassis as an obstacle -->
+        <min>0.15</min> 
+        <max>12.0</max> <!-- 12 meters is standard for indoor 2D SLAM -->
+        <resolution>0.015</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev> <!-- Adds 1cm of noise for simulation realism -->
+      </noise>
+    </ray>
+    <plugin name="gazebo_ros_ray_sensor" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=scan</remapping> <!-- Forces data onto the standard /scan topic -->
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>lidar_link</frame_name> <!-- Critical for the tf tree -->
+    </plugin>
+  </sensor>
+</gazebo>
 </robot>
