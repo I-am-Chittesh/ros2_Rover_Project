@@ -317,7 +317,7 @@
 
       <!-- Output Configuration -->
       <odometry_frame>odom</odometry_frame>
-      <robot_base_frame>base_link</robot_base_frame>
+      <robot_base_frame>dummy_link</robot_base_frame>
       <publish_odom>true</publish_odom>
       <publish_odom_tf>true</publish_odom_tf>
       <publish_wheel_tf>true</publish_wheel_tf>
@@ -326,7 +326,7 @@
   </gazebo>
   <gazebo reference="lidar_link">
   <sensor type="ray" name="lidar_sensor">
-    <pose>0 0 0 1.5708 0 0</pose>
+    <pose>0 0 0 0 1.5708 0</pose>
     <visualize>true</visualize> <!-- Keep true so you can see the blue laser rays in Gazebo -->
     <update_rate>10.0</update_rate> <!-- Scans per second (Hz) -->
     <ray>
