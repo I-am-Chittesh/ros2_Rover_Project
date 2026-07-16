@@ -4,16 +4,16 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    # Find your package and URDF
-    pkg_path = get_package_share_directory('rover_assembly_description')
-    urdf_file = os.path.join(pkg_path, 'urdf', 'rover_assembly_description.urdf')
+    # Define package and URDF paths
+    pkg_name = 'rover_assembly_description'
+    urdf_file = os.path.join(get_package_share_directory(pkg_name), 'urdf', 'rover_assembly_description.urdf')
     
-    # Read the URDF into memory
+    # Read the URDF file
     with open(urdf_file, 'r') as infp:
         robot_desc = infp.read()
 
     return LaunchDescription([
-        # Node 1: Broadcasts the static links to RViz
+        # Broadcasts the static CAD links to the TF tree
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
@@ -21,13 +21,14 @@ def generate_launch_description():
             output='screen',
             parameters=[{'robot_description': robot_desc}]
         ),
-        # Node 2: Broadcasts the movable joints (wheels/castor)
+        # Broadcasts the moving joints (wheels) to the TF tree
         Node(
             package='joint_state_publisher',
             executable='joint_state_publisher',
-            name='joint_state_publisher'
+            name='joint_state_publisher',
+            output='screen'
         ),
-        # Node 3: Boots RViz
+        # Opens RViz
         Node(
             package='rviz2',
             executable='rviz2',
