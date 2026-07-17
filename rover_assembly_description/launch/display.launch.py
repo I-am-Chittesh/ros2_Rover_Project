@@ -19,14 +19,17 @@ def generate_launch_description():
             executable='robot_state_publisher',
             name='robot_state_publisher',
             output='screen',
-            parameters=[{'robot_description': robot_desc}]
+            parameters=[
+                {'robot_description': robot_desc},
+                {'use_sim_time': True} # <--- ADD THIS
+            ]
         ),
-        # Broadcasts the moving joints (wheels) to the TF tree
         Node(
             package='joint_state_publisher',
             executable='joint_state_publisher',
             name='joint_state_publisher',
-            output='screen'
+            output='screen',
+            parameters=[{'use_sim_time': True}] # <--- ADD THIS
         ),
         # Opens RViz
         Node(
