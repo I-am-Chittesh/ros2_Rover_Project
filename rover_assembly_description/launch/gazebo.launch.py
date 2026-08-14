@@ -31,6 +31,7 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
+        launch_arguments={'world': world_file_path}.items()
     )
 
     # Spawn the robot (dropping it from Z = 0.1 meters so it doesn't clip the floor)
