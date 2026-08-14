@@ -6,6 +6,10 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
 def generate_launch_description():
+    import os
+    world_file_path = os.path.join(os.path.expanduser('~'), 'ros2_ws', 'src', 'my_rover', 'world_files', 'world_sim.world')
+
+def generate_launch_description():
     pkg_name = 'rover_assembly_description'
     pkg_share = get_package_share_directory(pkg_name)
 
