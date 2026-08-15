@@ -57,7 +57,7 @@ def generate_launch_description():
         executable='spawn_entity.py',
         arguments=['-topic', 'robot_description', '-entity', 'rover_assembly',
         '-x', '-3.400000', 
-        '-y', '-3.400000',
+        '-y', '-0.800000',
         '-z', '0.033876',
         '-R', '-0.001036',
         '-P', '-0.050862',
