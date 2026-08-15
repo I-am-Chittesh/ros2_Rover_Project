@@ -58,10 +58,10 @@ def generate_launch_description():
         arguments=['-topic', 'robot_description', '-entity', 'rover_assembly',
         'x', '-3.400000', 
         'y', '-3.400000',
-        'z', '0.033876',
+        'z', '-0.033876',
         'R', '-0.001036',
         'P', '-0.050862',
-        'Y', '2.082935'],
+        'Y', '-2.082935'],
         output='screen'
     )
 
