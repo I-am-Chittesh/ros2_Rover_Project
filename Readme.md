@@ -52,6 +52,33 @@ When responding to my next prompts, analyze our current state against the roadma
 - **Phase 2:** Gazebo Building Editor workflow and `.world` file integration with custom Blender `.dae` assets.
 - **Phase 3:** Configuring the `slam_toolbox` and `nav2` parameters to talk to the virtual URDF plugins.
 - **Phase 4:** Writing the micro-ROS ESP32 embedded C++ firmware and implementing the reflexive low-level sensor override logic.
+
+# Updated Workaround
+
+
+
+# 1. The Global Path (Waypoint Navigation)
+Mechanism: The rover bypasses open-ended, free-roaming autonomous pathfinding.
+
+Execution: We utilize Nav2's Navigate Through Poses mode. By defining a strict sequence of predetermined coordinates (waypoints), Nav2 calculates a rigid "golden path" connecting Point A to Point B.
+
+Controller: The RegulatedPurePursuitController is tightly tuned to strictly hug this predetermined line without attempting aggressive, unpredictable corner-cutting.
+
+## 2. The Local Detour Loop (IR Sensor Injection)
+Hardware Layer: The physical ESP32 continuously polls the discrete IR and Ultrasonic sensor array.
+
+Data Bridge: Using micro-ROS over Wi-Fi, the ESP32 publishes live obstacle distance data as standard sensor_msgs/Range topics.
+
+Costmap Injection: Nav2's local_costmap is configured to listen directly to these hardware topics, bridging the physical and simulated worlds.
+
+Behavior: When a physical obstacle breaches the IR sensor threshold, a temporary danger zone is injected into the local costmap. Nav2 dynamically steers the rover off the predetermined path to avoid the collision, then immediately calculates an intercept trajectory to snap back onto the golden path once cleared.
+
+# 3. The Physical Failsafe (Hardware Override)
+If the costmap determines the rover is completely boxed in and cannot compute a valid detour, Nav2 will pause velocity commands.
+
+Concurrently, a low-level C++ safety routine on the ESP32 actively monitors incoming /cmd_vel network commands.
+
+If an obstacle breaches a critical minimum distance, the ESP32 triggers a hardware-level emergency stop to the motor drivers, ignoring the simulation until the physical path is clear.
 ```
 Made by: I-am-Chittesh
 ```
