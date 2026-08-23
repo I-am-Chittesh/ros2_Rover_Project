@@ -92,7 +92,7 @@
     </collision>
   </link>
   <joint
-    name="left_wheel_joint "
+    name="left_wheel_joint"
     type="continuous">
     <origin
       xyz="-0.030862 0.060664 0.00024787"
