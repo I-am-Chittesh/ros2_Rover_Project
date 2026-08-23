@@ -342,7 +342,7 @@
       <range>
         <!-- The min range MUST be larger than the radius of your rover's physical footprint -->
         <!-- Otherwise, the LiDAR will detect your own chassis as an obstacle -->
-        <min>0.15</min> 
+        <min>0.25</min> 
         <max>12.0</max> <!-- 12 meters is standard for indoor 2D SLAM -->
         <resolution>0.015</resolution>
       </range>
